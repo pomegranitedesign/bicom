@@ -1,18 +1,28 @@
 import React from 'react'
-import { StyleSheet, Text, SafeAreaView, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { View, StyleSheet } from 'react-native'
+import { MainNavigation } from './navigation'
+import { StatusBar } from 'expo-status-bar'
+import { MenuProvider } from 'react-native-popup-menu'
 
 const App = () => {
 	return (
-		<SafeAreaView>
-			<View style={styles.container}>
-				<Text>Hello World from dev branch</Text>
-			</View>
-		</SafeAreaView>
+		<View style={styles.container}>
+			<StatusBar hidden />
+			<MenuProvider>
+				<NavigationContainer>
+					<MainNavigation />
+				</NavigationContainer>
+			</MenuProvider>
+		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {}
+	container: {
+		flex: 1,
+		justifyContent: 'center'
+	}
 })
 
 export default App
