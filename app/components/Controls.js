@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
-import { Picker, PickerIOS } from '@react-native-community/picker'
+import { Picker } from '@react-native-community/picker'
 import ModalSelector from 'react-native-modal-selector'
 
 // Check if the current platform is iOS

@@ -1,16 +1,22 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { StyleSheet } from 'react-native'
 import { Feather } from '@expo/vector-icons'
-import { View } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import ContextMenu from './ContextMenu'
 
 const HeaderRight = () => {
+	const navigation = useNavigation()
+
 	return (
 		<View style={styles.container}>
-			<Feather
-				style={{ ...styles.icon, marginRight: 15 }}
-				name="search"
-			/>
+			<TouchableOpacity onPress={() => navigation.navigate('Search')}>
+				<Feather
+					style={{ ...styles.icon, marginRight: 15 }}
+					name="search"
+				/>
+			</TouchableOpacity>
+
 			<ContextMenu />
 		</View>
 	)

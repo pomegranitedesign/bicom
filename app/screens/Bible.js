@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import Controls from './Controls'
+import Controls from '../components/Controls'
 
 const Bible = () => {
 	return (

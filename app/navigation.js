@@ -1,9 +1,16 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Onboard from './screens/Onboard'
-import Registration from './screens/Registration'
-import Main from './screens/Main'
-import HeaderRight from './components/HeaderRight'
+import {
+	Main,
+	Onboard,
+	Registration,
+	Profile,
+	Testimonies,
+	Settings,
+	Bookmarks,
+	Search
+} from './screens'
+import { HeaderRight } from './components'
 
 const LoginStack = createStackNavigator()
 export const LoginNavigation = () => {
@@ -20,7 +27,7 @@ export const MainNavigation = () => {
 	return (
 		<MainStack.Navigator
 			screenOptions={{
-				headerRight: HeaderRight,
+				headerRight: () => <HeaderRight />,
 				headerStyle: { backgroundColor: '#084480' },
 				headerTitleStyle: {
 					color: 'white',
@@ -29,6 +36,11 @@ export const MainNavigation = () => {
 			}}
 		>
 			<MainStack.Screen name="Bible Companion" component={Main} />
+			<MainStack.Screen name="Profile" component={Profile} />
+			<MainStack.Screen name="Testimonies" component={Testimonies} />
+			<MainStack.Screen name="Bookmarks" component={Bookmarks} />
+			<MainStack.Screen name="Settings" component={Settings} />
+			<MainStack.Screen name="Search" component={Search} />
 		</MainStack.Navigator>
 	)
 }
