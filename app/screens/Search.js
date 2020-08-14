@@ -69,9 +69,6 @@ const Search = () => {
 				)}
 			</View>
 
-			{/* 3 selects */}
-			{/* Search Old Testament */}
-			{/* Search New Testament */}
 			<View style={styles.selectContainer}>
 				<View style={styles.select}>
 					<View style={styles.selectInfo}>
