@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Platform, ScrollView } from 'react-native'
+import { View, StyleSheet, Platform, ScrollView } from 'react-native'
 import { ProfileImage, UserInfo } from '../components'
 
 const Profile = (props) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { Testimony, AddTestimony } from '../components'
-import testImage from '../../assets/user.jpg'
+import testImage from '../assets/user.jpg'
 
 const _test = [
 	{

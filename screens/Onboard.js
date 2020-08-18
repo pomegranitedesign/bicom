@@ -22,7 +22,7 @@ const Onboard = (props) => {
 						image: (
 							<Image
 								style={{ height: 300, width: 300 }}
-								source={require('../../assets/firstImage.png')}
+								source={require('../assets/firstImage.png')}
 							/>
 						),
 						title: 'GOD LOVES YOU',

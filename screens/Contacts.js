@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { Contact } from '../components'
-import userImage from '../../assets/user.jpg'
+import userImage from '../assets/user.jpg'
 
 const _testContacts = [
 	{

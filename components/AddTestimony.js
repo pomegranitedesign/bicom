@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
-import image from '../../assets/user.jpg'
+import image from '../assets/user.jpg'
 
 // This module requires the user's information such as his image
 // assuming we already have the image
