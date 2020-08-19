@@ -9,8 +9,6 @@ const port = process.env.PORT || 4000
 // Middleware
 app.use(cors())
 
-const bibles = []
-
 /**
  * 
  * @bicom-api
@@ -23,6 +21,25 @@ app.get('/api/bibles', async (req, res) => {
 		headers: { 'api-key': process.env.BIBLE_API_KEY }
 	})
 	res.json({ bibles: response.data })
+})
+
+/**
+ * 
+ * @bicom-api
+ * GET a single bible
+ * public
+ * 
+ */
+app.get('/api/bibles/:bibleID', async (req, res) => {
+	const { bibleID } = req.params
+	const response = await axios.get(
+		`${process.env.BASE_URL}/bibles/${bibleID}`,
+		{
+			headers: { 'api-key': process.env.BIBLE_API_KEY }
+		}
+	)
+	const bible = response.data
+	res.json(bible)
 })
 
 /**
@@ -56,7 +73,7 @@ app.get('/api/bibles/:bibleID/books/:bookID', async (req, res) => {
 		{ headers: { 'api-key': process.env.BIBLE_API_KEY } }
 	)
 	const book = response.data
-	console.log(book)
+	res.json(book)
 })
 
 /**

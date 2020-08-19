@@ -8,7 +8,13 @@ import {
 
 const initialState = {
 	bibles: [],
-	currentBible: null,
+	currentBible: {
+		bible: {},
+		currentBook: {},
+		currentChapter: {},
+		chapters: [],
+		books: []
+	},
 	isFetching: false,
 	hasError: false,
 	error: {}

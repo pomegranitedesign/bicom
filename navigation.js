@@ -35,7 +35,7 @@ export const MainNavigation = () => {
 				}
 			}}
 		>
-			<MainStack.Screen name="Bible Companion" component={Main} />
+			<MainStack.Screen name="Bicom" component={Main} />
 			<MainStack.Screen name="Profile" component={Profile} />
 			<MainStack.Screen name="Testimonies" component={Testimonies} />
 			<MainStack.Screen name="Bookmarks" component={Bookmarks} />

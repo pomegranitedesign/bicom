@@ -1,103 +1,34 @@
-import React, { useState } from 'react'
-import { View, Text, StyleSheet, Platform } from 'react-native'
-import { Picker } from '@react-native-community/picker'
-import ModalSelector from 'react-native-modal-selector'
+import React from 'react'
+import Spinner from 'react-native-loading-spinner-overlay'
+import { connect } from 'react-redux'
+import { View, StyleSheet, Platform } from 'react-native'
+
+import { selectBible } from '../store/actions/bibleActions'
+import { BookSelector, ChapterSelector, BibleSelector } from '../components'
 
 const isIOS = Platform.OS === 'ios'
 
-const Controls = ({ bibles, currentBible, selectBible, isFetching }) => {
-	const [ currentTranslation, setCurrentTranslation ] = useState(
-		currentBible.bible.abbreviationLocal
-	)
+const Controls = ({ bibleState, selectBible }) => {
+	const handleBibleChanges = (book = {}, type = '') => selectBible(book, type)
 
-	const handleTranslationChange = (book) => {
-		selectBible(book)
-		setCurrentTranslation(book.abbreviationLocal)
-	}
-
-	console.log(
-		'currentBible.bible.abbreviationLocal:',
-		currentBible.bible.abbreviationLocal
-	)
-
-	if (isFetching)
-		return (
-			<View>
-				<Text>Loading...</Text>
-			</View>
-		)
-
+	if (bibleState.isFetching)
+		return <Spinner visible={bibleState.isFetching} animation="fade" />
 	return (
 		<View style={styles.container}>
-			{isIOS ? (
-				<ModalSelector
-					data={currentBible.chapters}
-					keyExtractor={(item) => item.id}
-					labelExtractor={(item) => item.reference}
-				>
-					<Text>{currentBible.currentChapter.reference}</Text>
-				</ModalSelector>
-			) : (
-				<Picker
-					style={styles.picker}
-					selectedValue={currentBible.abbreviationLocal}
-				>
-					{currentBible.chapters.map((chapter) => (
-						<Picker.Item
-							key={chapter.id}
-							label={chapter.reference}
-							value={chapter.id}
-						/>
-					))}
-				</Picker>
-			)}
+			<BookSelector
+				bibleState={bibleState}
+				handleBibleChanges={handleBibleChanges}
+			/>
 
-			{isIOS ? (
-				<ModalSelector
-					data={currentBible.chapters}
-					keyExtractor={(item) => item.id}
-					labelExtractor={(item) => item.number}
-				>
-					<Text>{currentBible.currentChapter.number}</Text>
-				</ModalSelector>
-			) : (
-				<Picker
-					style={styles.picker}
-					selectedValue={currentBible.currentChapter.number}
-				>
-					{currentBible.chapters.map((chapter) => (
-						<Picker.Item
-							key={chapter.id}
-							label={chapter.number}
-							value={chapter.id}
-						/>
-					))}
-				</Picker>
-			)}
+			<ChapterSelector
+				bibleState={bibleState}
+				handleBibleChanges={handleBibleChanges}
+			/>
 
-			{isIOS ? (
-				<ModalSelector
-					data={bibles}
-					keyExtractor={(item) => item.id}
-					labelExtractor={(item) => item.name}
-					onChange={(selectedBook) =>
-						handleTranslationChange(selectedBook)}
-				>
-					<Text>{currentTranslation}</Text>
-				</ModalSelector>
-			) : (
-				<Picker
-					style={styles.picker}
-					selectedValue={currentBible.abbreviationLocal}
-				>
-					{bibles.map((book) => (
-						<Picker.Item
-							label={book.name}
-							value={book.abbreviationLocal}
-						/>
-					))}
-				</Picker>
-			)}
+			<BibleSelector
+				bibleState={bibleState}
+				handleBibleChanges={handleBibleChanges}
+			/>
 		</View>
 	)
 }
@@ -116,8 +47,10 @@ const styles = StyleSheet.create({
 	},
 
 	picker: {
-		flex: 1
+		flex: 0.33
 	}
 })
 
-export default Controls
+const mapStateToProps = (state) => ({ bibleState: state.bible })
+
+export default connect(mapStateToProps, { selectBible })(Controls)

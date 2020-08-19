@@ -41,13 +41,20 @@ const ProfileImage = ({ profileImageURL, setProfileImageURL }) => {
 	return (
 		<View style={styles.container}>
 			<Image style={styles.image} source={{ uri: profileImageURL }} />
-			<Entypo
-				style={styles.icon}
-				onPress={_pickImage}
-				name="camera"
-				size={36}
-				color="white"
-			/>
+			<View
+				style={{
+					borderRadius: 100,
+					overflow: 'hidden'
+				}}
+			>
+				<Entypo
+					style={styles.icon}
+					onPress={_pickImage}
+					name="camera"
+					size={36}
+					color="white"
+				/>
+			</View>
 		</View>
 	)
 }

@@ -5,6 +5,10 @@ import Contact from './Contact'
 import SeparatorLine from './SeparatorLine'
 import Testimony from './Testimony'
 import AddTestimony from './AddTestimony'
+import Bookmark from './Bookmark'
+import BookSelector from './BookSelector'
+import ChapterSelector from './ChapterSelector'
+import BibleSelector from './BibleSelector'
 export {
 	HeaderRight,
 	ProfileImage,
@@ -12,5 +16,9 @@ export {
 	Contact,
 	SeparatorLine,
 	Testimony,
-	AddTestimony
+	AddTestimony,
+	Bookmark,
+	BookSelector,
+	ChapterSelector,
+	BibleSelector
 }
