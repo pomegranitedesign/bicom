@@ -9,6 +9,7 @@ import Bookmark from './Bookmark'
 import BookSelector from './BookSelector'
 import ChapterSelector from './ChapterSelector'
 import BibleSelector from './BibleSelector'
+import FeedItem from './FeedItem'
 export {
 	HeaderRight,
 	ProfileImage,
@@ -20,5 +21,6 @@ export {
 	Bookmark,
 	BookSelector,
 	ChapterSelector,
-	BibleSelector
+	BibleSelector,
+	FeedItem
 }

@@ -1,5 +1,8 @@
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { View, StyleSheet } from 'react-native'
@@ -9,8 +12,17 @@ import { MainNavigation } from './navigation'
 import rootReducer from './store/reducers'
 import thunk from 'redux-thunk'
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
-store.subscribe(() => store.getState())
+// const persistConfig = {
+// 	key: 'business',
+// 	storage: AsyncStorage
+// }
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(rootReducer, {}, applyMiddleware(thunk))
+// const persistedStore = persistStore(store)
+// persistedStore.subscribe(() =>
+// 	console.log('persistedStore.getState():', persistedStore.getState())
+// )
 
 const App = () => {
 	return (
